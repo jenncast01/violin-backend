@@ -1,0 +1,11 @@
+services:
+  violin-backend:
+    build: .
+    container_name: violin-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_PATH=violin_journey.db
+      - JWT_SECRET=violin_journey_secret_key_2026
+    volumes:
+      - ./data:/app/data
