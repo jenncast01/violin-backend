@@ -9,3 +9,6 @@ services:
       - JWT_SECRET=violin_journey_secret_key_2026
     volumes:
       - ./data:/app/data
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW

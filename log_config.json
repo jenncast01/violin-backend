@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "access": {
+      "()": "uvicorn.logging.AccessFormatter",
+      "fmt": "%(client_addr)s - \"%(request_line)s\" %(status_code)s"
+    },
+    "default": {
+      "()": "uvicorn.logging.DefaultFormatter",
+      "fmt": "%(levelprefix)s %(message)s",
+      "use_colors": false
+    }
+  },
+  "handlers": {
+    "access_file": {
+      "class": "logging.FileHandler",
+      "filename": "/var/log/uvicorn/access.log",
+      "formatter": "access"
+    },
+    "default": {
+      "class": "logging.StreamHandler",
+      "formatter": "default",
+      "stream": "ext://sys.stdout"
+    }
+  },
+  "loggers": {
+    "uvicorn.access": {
+      "handlers": ["access_file"],
+      "propagate": false
+    },
+    "uvicorn.error": {
+      "handlers": ["default"],
+      "propagate": false
+    }
+  }
+}
