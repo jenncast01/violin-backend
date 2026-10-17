@@ -1,6 +1,6 @@
 [DEFAULT]
 banaction = iptables-allports
-ignoreip  = 127.0.0.1/8
+ignoreip  = 127.0.0.1/8 172.16.0.0/12
 usedns    = no
 backend   = polling
 
